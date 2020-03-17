@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewData["Title"] = "CreateSchedule";
+}
+
+
+
+@section Head  {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+}
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header planner-bg-primary">
+                    <div class="col text-center planner-text-secondary">
+                        Create your schedule
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form id="createTaskTypeForm" class="mb-3">
+                        <div class="col mb-4 pl-0 font-weight-bold planner-text-primary js-task-type-form-title">
+                            <h5>Create task types - will be used when creating tasks</h5>
+                        </div>
+                        <div class="form-row mb-1 d-flex align-items-end">
+                            <input type="hidden" name="taskTypeId" />
+                            <div class="form-group col-5">
+                                <label for="type" class="planner-text-primary">Name of task type</label>
+                                <input type="text" class="form-control" id="type" placeholder="Gym, Reading, Learning">
+                            </div>
+                            <div class="form-group col-5">
+                                <label for="color" class="planner-text-primary">Color of type</label>
+                                <input type="text" class="form-control" id="color">
+                            </div>
+                            <div class="form-group col-2">
+                                <button type="button" class="btn btn-light js-save-task-types-btn"><i class="far fa-save text-success"></i></button>
+                            </div>
+                            <div class="form-group col-2 d-none">
+                                <button type="button" class="btn btn-light"><i class="far fa-edit planner-text-primary"></i></button>
+                                <button type="button" class="btn btn-light"><i class="far fa-trash-alt text-danger"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row pb-4 mb-3 border-bottom">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-start">
+                                <button type="button" class="btn btn-light js-add-task-type-row">
+                                    <span class="pr-2 planner-text-primary">Add another task type</span>
+                                    <i class="fas fa-plus-square pr-2 planner-text-primary"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="createTaskForm">
+                        <div class="col mb-4 pl-0 font-weight-bold planner-text-primary">
+                            <h5>Create tasks</h5>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="title" class="planner-text-primary">Title</label>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="type" class="planner-text-primary">Type</label>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control" id="title" placeholder="Gym session, Reading, Learning">
+                            </div>
+                            <div class="form-group col-6">
+                                <select type="text" class="form-control taskTypeSelect" id="type">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="form-group col-12">
+                                <label for="description" class="planner-text-primary">Description</label>
+                                <textarea type="text" class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row mb-4">
+                            <div class="col-3">
+                                <label for="startTime" class="planner-text-primary">Start time</label>
+                                <input type="text" class="form-control datepicker" id="startTime" placeholder="11:30am" />
+                            </div>
+                            <div class="col-3">
+                                <label for="endTime" class="planner-text-primary">End time</label>
+                                <input type="text" class="form-control datepicker" id="endTime" placeholder="1:30pm" />
+                            </div>
+                            <div class="col-6">
+                                <label for="day" class="planner-text-primary">Select day of task</label>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn planner-btn-primary">Mo</button>
+                                    <button type="button" class="btn btn-light">Tu</button>
+                                    <button type="button" class="btn btn-light">We</button>
+                                    <button type="button" class="btn btn-light">Th</button>
+                                    <button type="button" class="btn btn-light">Fr</button>
+                                    <button type="button" class="btn btn-light">Sa</button>
+                                    <button type="button" class="btn btn-light">Su</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mb-4">
+                            <div class="form-group col-12">
+                                <button type="button" class="btn btn-light"><span class="pr-2 text-success">Save task</span><i class="far fa-save text-success"></i></button>
+                            </div>
+                            <div class="form-group col-12 d-none">
+                                <button type="button" class="btn btn-light"><span class="pr-2 planner-text-primary">Edit task</span><i class="far fa-edit planner-text-primary"></i></button>
+                                <button type="button" class="btn btn-light"><span class="pr-2 text-danger">Delete task</span><i class="far fa-trash-alt text-danger"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-start">
+                                <button type="button" class="btn btn-light js-add-task-row">
+                                    <span class="pr-2 planner-text-primary">Add another task type</span>
+                                    <i class="fas fa-plus-square pr-2 planner-text-primary"></i>
+                                </button>
+                                @*<button type="submit" class="btn btn-info ml-2">Save tasks</button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-end">
+                                <button class="btn planner-btn-primary ml-2">Finish and go to calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/html" id="template-task-type-row">
+        <div class="form-row mb-1 d-flex align-items-end">
+            <div class="form-group col-5">
+                <input type="text" class="form-control" id="type" placeholder="Gym, Reading, Learning">
+            </div>
+            <div class="form-group col-5">
+                <input type="text" class="form-control" id="color">
+            </div>
+            <div class="form-group col-2">
+                <button type="button" class="btn btn-light js-save-task-types-btn"><i class="far fa-save text-success"></i></button>
+            </div>
+            <div class="form-group col-2 d-none">
+                <button type="button" class="btn btn-light"><i class="far fa-edit plannerr-text-primary"></i></button>
+                <button type="button" class="btn btn-light"><i class="far fa-trash-alt text-danger"></i></button>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="template-task-row">
+        <div class="form-row border-top pt-3">
+            <div class="form-group col-6">
+                <label for="title" class="planner-text-primary">Title</label>
+            </div>
+            <div class="form-group col-6">
+                <label for="type" class="planner-text-primary">Type</label>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="form-group col-6">
+                <input type="text" class="form-control" id="title" placeholder="Gym session, Reading, Learning">
+            </div>
+            <div class="form-group col-6">
+                <select type="text" class="form-control" id="type">
+                    <option></option>
+                    <option value="gym">Gym</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="form-group col-12">
+                <label for="description" class="planner-text-primary">Description</label>
+                <textarea type="text" class="form-control" id="description" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="col-3">
+                <label for="startTime" class="planner-text-primary">Start time</label>
+                <input type="text" class="form-control datepicker" id="startTime" placeholder="11:30am" />
+            </div>
+            <div class="col-3">
+                <label for="endTime" class="planner-text-primary">End time</label>
+                <input type="text" class="form-control datepicker" id="endTime" placeholder="1:30pm" />
+            </div>
+            <div class="col-6">
+                <label for="day" class="planner-text-primary">Select day of task</label>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn planner-btn-primary">Mo</button>
+                    <button type="button" class="btn btn-light">Tu</button>
+                    <button type="button" class="btn btn-light">We</button>
+                    <button type="button" class="btn btn-light">Th</button>
+                    <button type="button" class="btn btn-light">Fr</button>
+                    <button type="button" class="btn btn-light">Sa</button>
+                    <button type="button" class="btn btn-light">Su</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="form-group col-12">
+                <button type="button" class="btn btn-light"><span class="pr-2 text-success">Save task</span><i class="far fa-save text-success"></i></button>
+            </div>
+            <div class="form-group col-12 d-none">
+                <button type="button" class="btn btn-light"><span class="pr-2 planner-text-primary">Edit task</span><i class="far fa-edit planner-text-primary"></i></button>
+                <button type="button" class="btn btn-light"><span class="pr-2 text-danger">Delete task</span><i class="far fa-trash-alt text-danger"></i></button>
+            </div>
+        </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/js/Home/createSchedule.js"></script>
+}

@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Head  {
+    <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
+
+    <!-- If you use the default popups, use this. -->
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+
+}
+
+
+
+<div class="container-fluid mt-2">
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <a asp-controller="Home" asp-action="CreateSchedule" class="btn btn-primary">Create shedule</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-4">
+                        <select class="btn btn-light js-calendar-display">
+                            <option value="week">Week</option>
+                            <option value="month">Month</option>
+                        </select>
+                        <div class="btn btn-light js-calendar-now">This week</div>
+                        <div class="btn btn-light js-calendar-prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="btn btn-light js-calendar-forward"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">My shedule</h5>
+                    <div id="calendar"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://uicdn.toast.com/tui.dom/v3.0.0/tui-dom.js"></script>
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+
+    @*<environment include="Development">*@
+    <script src="~/js/Home/index.js"></script>
+    @*</environment>*@
+    @*<environment exclude="Development">
+            <script src="~/js/Home/index.min.js" asp-append-version="true"></script>
+        </environment>*@
+}
